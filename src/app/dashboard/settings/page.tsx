@@ -63,7 +63,7 @@ export default function SettingsPage() {
       } else {
         setMessage({ type: "error", text: data.error || "Gagal menyimpan pengaturan" })
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: "error", text: "Terjadi kesalahan koneksi" })
     } finally {
       setSaving(false)

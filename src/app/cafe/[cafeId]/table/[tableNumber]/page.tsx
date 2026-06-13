@@ -20,12 +20,6 @@ import { Input } from "@/components/ui/input";
 import { cn, formatCurrency } from "@/lib/utils";
 import { MenuItem, Cafe, CreateOrderInput } from "@/lib/types";
 
-// --- Categories from API helper ---
-function getCategories(menu: MenuItem[]) {
-  const cats = Array.from(new Set(menu.map(item => item.category)));
-  return ["Semua", ...cats];
-}
-
 interface CartItem {
   menu_item: MenuItem;
   quantity: number;
@@ -452,8 +446,8 @@ export default function CustomerMenuPage({ params }: { params: { cafeId: string,
                           <Trash2 className="w-4 h-4 text-gray-400" />
                         </button>
                       </div>
-                      <p className="text-sm text-orange-600 font-bold mb-3">{formatCurrency(item.menu_item.price)}</p>
-                      <div className="flex items-center border border-gray-200 rounded-lg w-fit">
+                      <p className="text-sm text-primary font-bold mb-3">{formatCurrency(item.menu_item.price)}</p>
+                      <div className="flex items-center border border-input rounded-lg w-fit">
                         <button 
                           onClick={() => updateQuantity(item.menu_item.id, -1)}
                           className="p-1.5 px-3 hover:bg-gray-50"
@@ -478,9 +472,9 @@ export default function CustomerMenuPage({ params }: { params: { cafeId: string,
                   <span className="text-gray-500">Subtotal</span>
                   <span className="font-medium">{formatCurrency(cartTotal)}</span>
                 </div>
-                <div className="flex justify-between mb-4 pt-4 border-t border-gray-200">
+                <div className="flex justify-between mb-4 pt-4 border-t border-border">
                   <span className="text-lg font-bold">Total</span>
-                  <span className="text-lg font-bold text-orange-600">{formatCurrency(cartTotal)}</span>
+                  <span className="text-lg font-bold text-primary">{formatCurrency(cartTotal)}</span>
                 </div>
 
                 <form onSubmit={handleCheckout}>
